@@ -41,10 +41,10 @@ namespace GameServer
 
                 receiveBuffer = new byte[dataBufferSize];
 
-                stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallBack, null);
+                stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
             }
 
-            private void ReceiveCallBack(IAsyncResult _result)
+            private void ReceiveCallback(IAsyncResult _result)
             {
                 try
                 {
@@ -57,7 +57,7 @@ namespace GameServer
 
                     Array.Copy(receiveBuffer, _data, _byteLength);
 
-                    stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallBack, null);
+                    stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
                 }
                 catch(Exception e)
                 {
